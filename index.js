@@ -23,7 +23,7 @@ app.use(express.json({ extended: true }))
 
 //3 rutas
 /**
- * * APP DE MASCOTAS - ADOPCIÓN
+ * * APP DE PRODUCTOS - COMPRA
  * CRUD - CREAR - LEER - ACTUALIZAR - BORRAR DATOS
  * AUTENTICACIÓN CON AUTORIZACIÓN
  */
