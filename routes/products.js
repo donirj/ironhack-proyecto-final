@@ -18,6 +18,6 @@ router.put("/update", productsController.updateProduct);
 router.delete("/delete", productsController.deleteProduct);
 
 // GET - PRODUCTS - OBTENER TODOS LOS PRODUCTOS
-router.get("/get-single", productsController.getSingleProduct);
+router.get("/get-single/:id", productsController.getSingleProduct);
 
 module.exports = router;

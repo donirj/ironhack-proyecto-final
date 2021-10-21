@@ -1,3 +1,4 @@
+const { request } = require("express");
 const Product = require("./../models/Product");
 
 exports.getAllProducts = async (req, res) => {
@@ -24,7 +25,7 @@ exports.getAllProducts = async (req, res) => {
 exports.createProducts = async (req, res) => {
   //OBTENER DATOS DE FORMULARIO
   const { name, price, pictureUrl, description, available } = req.body;
-
+  console.log(req.body);
   try {
     const newProduct = await Product.create({
       name,
@@ -97,10 +98,10 @@ exports.deleteProduct = async (req, res) => {
 };
 
 exports.getSingleProduct = async (req, res) => {
-  const { id } = req.body;
+  const { id } = req.params;
 
   try {
-    const singleProduct = await Product.findById({ _id: id });
+    const singleProduct = await Product.findById(id);
     return res.json({
       data: singleProduct,
       msg: "Este produco fue obtenido con exito",
@@ -108,7 +109,7 @@ exports.getSingleProduct = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.status(500).json({
-      msgError: "hubo un error al obtener el producto",
+      msgError: error.message,
     });
   }
 };

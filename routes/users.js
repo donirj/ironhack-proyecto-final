@@ -1,11 +1,11 @@
 // ./routes/users.js
 
-const express   = require("express")
-const router    = express.Router()
+const express = require("express");
+const router = express.Router();
 
-const { check } = require("express-validator")
+const { check } = require("express-validator");
 
-const usersController = require("./../controllers/usersController")
+const usersController = require("./../controllers/usersController");
 //despues de crear esta linea debo crear el userscontroller
 
 // CRUD DE USUARIOS
@@ -16,28 +16,26 @@ const usersController = require("./../controllers/usersController")
  */
 
 // POST - USER - CREAR UN USUARIO
-router.post("/create",
-    [
-        check("username", "El nombre es obligatorio.").not().isEmpty(), // VERIFICAR QUE UNA CASILLA NO ESTÉ VACÍA
-        check("email", "Agrega un email válido").isEmail(),
-        check("password", "El password debe ser mínimo de 6 caracteres").isLength({ min: 6 })
-    ]
-, usersController.createUser)
-
+router.post(
+  "/create",
+  [
+    check("username", "El nombre es obligatorio.").not().isEmpty(), // VERIFICAR QUE UNA CASILLA NO ESTÉ VACÍA
+    check("email", "Agrega un email válido").isEmail(),
+    check("password", "El password debe ser mínimo de 6 caracteres").isLength({
+      min: 6,
+    }),
+  ],
+  usersController.createUser
+);
 
 // PUT - USER - ACTUALIZAR UN USUARIO
 /**
  * - SOLO LOS MISMOS USUARIOS PUEDEN ACTUALIZAR SUS DATOS
  */
 
-
-
-
-
 // DELETE - USER - BORRAR UN USUARIO
 /**
  * - SOLO LOS ADMINS PUEDEN BORRAR AL USUARIO
  */
 
-
-module.exports = router
+module.exports = router;
